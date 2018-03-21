@@ -3,6 +3,7 @@ package sk.uniza.fri.wof.herneProstredie;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import sk.uniza.fri.wof.herneProstredie.npc.INpc;
 import sk.uniza.fri.wof.herneProstredie.predmety.IPredmet;
 
 /**
@@ -21,6 +22,7 @@ public class Miestnost {
     private String popisMiestnosti;
     private HashMap<String, IDvere> zoznamDveri;
     private HashMap<String, IPredmet> predmety;
+    private HashMap<String, INpc> npc;
     private final String nazov;
             
     /**
@@ -35,6 +37,7 @@ public class Miestnost {
         this.nazov = nazov;
         this.zoznamDveri = new HashMap<String, IDvere>();
         this.predmety = new HashMap<String, IPredmet>();
+        this.npc = new HashMap<>();
     }   
 
     /*public void nastavVychod(Miestnost druhaMiestnost) {
@@ -43,6 +46,10 @@ public class Miestnost {
     
     public void pridajPredmet(IPredmet predmet) {
         this.predmety.put(predmet.getNazov(), predmet);
+    }
+    
+    public void pridajNpc(INpc npc) {
+        this.npc.put(npc.getMeno(), npc);
     }
     
     /**
@@ -61,6 +68,11 @@ public class Miestnost {
         System.out.print("Vychody: ");
         for (String vychod : this.zoznamDveri.keySet()) {
             System.out.print(vychod+" ");
+        }
+        System.out.println();
+        System.out.print("Zoznam npc: ");
+        for (String npc : this.npc.keySet()) {
+            System.out.print(npc+" ");
         }
         System.out.println();
     }
@@ -103,6 +115,10 @@ public class Miestnost {
 
     public void odstranDvere(String dvere) {
         this.zoznamDveri.remove(dvere);
+    }
+
+    public INpc getNpc(String meno) {
+        return this.npc.get(meno);
     }
 
     

@@ -111,6 +111,9 @@ public class Hra  {
             case "pouzi":
                 this.hrac.pouzi(prikaz);
                 return false;
+            case "interakcia":
+                this.hrac.interakciaSNpc(prikaz);
+                return false;
             default:
                 return false;
         }

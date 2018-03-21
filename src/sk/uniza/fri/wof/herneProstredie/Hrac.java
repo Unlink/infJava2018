@@ -3,6 +3,7 @@ package sk.uniza.fri.wof.herneProstredie;
 
 import sk.uniza.fri.wof.hra.Prikaz;
 import java.util.HashMap;
+import sk.uniza.fri.wof.herneProstredie.npc.INpc;
 import sk.uniza.fri.wof.herneProstredie.predmety.IPredmet;
 
 /*
@@ -104,5 +105,14 @@ public class Hrac {
         }
         
         predmet.pouzi(this, prikaz.getParameter(1));
+    }
+
+    public void interakciaSNpc(Prikaz prikaz) {
+        if (!prikaz.maParameter()) {
+            System.out.println("A s akym?");
+            return;
+        }
+        INpc npc = this.aktualnaMiestnost.getNpc(prikaz.getParameter());
+        npc.interakcia(this, prikaz.getParameter(1));
     }
 }

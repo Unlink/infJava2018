@@ -13,7 +13,7 @@ package sk.uniza.fri.wof.hra;
 public class NazvyPrikazov {
     // konstantne pole nazvov prikazov
     private static final String[] PLATNE_PRIKAZY = {
-        "chod", "ukonci", "pomoc", "preskumaj", "zodvihni", "poloz", "pouzi"
+        "chod", "ukonci", "pomoc", "preskumaj", "zodvihni", "poloz", "pouzi", "interakcia"
     };
 
     /**
