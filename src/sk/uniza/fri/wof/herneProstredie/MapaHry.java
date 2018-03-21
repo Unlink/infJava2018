@@ -1,6 +1,7 @@
 package sk.uniza.fri.wof.herneProstredie;
 
 import sk.uniza.fri.wof.herneProstredie.npc.Osoba;
+import sk.uniza.fri.wof.herneProstredie.npc.Vratnik;
 import sk.uniza.fri.wof.herneProstredie.predmety.Hodinky;
 import sk.uniza.fri.wof.herneProstredie.predmety.Kluc;
 import sk.uniza.fri.wof.herneProstredie.predmety.Pacidlo;
@@ -64,7 +65,7 @@ public class MapaHry {
         terasa.pridajPredmet(new PortalGun());
         
         terasa.pridajNpc(new Osoba("Jozko"));
-        
+        terasa.pridajNpc(new Vratnik());
         return terasa;  // startovacia miestnost hry
     }
 }

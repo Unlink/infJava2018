@@ -115,4 +115,8 @@ public class Hrac {
         INpc npc = this.aktualnaMiestnost.getNpc(prikaz.getParameter());
         npc.interakcia(this, prikaz.getParameter(1));
     }
+
+    public void pridajPredmet(IPredmet predmet) {
+       this.inventar.put(predmet.getNazov(), predmet);
+    }
 }
