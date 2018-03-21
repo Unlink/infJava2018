@@ -40,6 +40,15 @@ public class MapaHry {
         Miestnost labak = new Miestnost("labak", "pocitacove laboratorium");
         Miestnost kancelaria = new Miestnost("kancelaria", "kancelaria spravcu pocitacoveho laboratoria");
         
+        Miestnost chodba1Poschodie = new Miestnost("chodba1Poschodie", "chodba1Poschodie");
+        Miestnost chodba2Poschodie = new Miestnost("chodba2Poschodie", "chodba2Poschodie");
+        
+        Vytah vytah = new Vytah();
+        //Vytahove dvere
+        VytahoveDvere dvereNaPrizemi = new VytahoveDvere(vytah, aula, 0);
+        VytahoveDvere dvereNa1 = new VytahoveDvere(vytah, chodba1Poschodie, 1);
+        VytahoveDvere dvereNa2 = new VytahoveDvere(vytah, chodba2Poschodie, 2);
+        
         DvereNaKluc dvereTerasaAula = new DvereNaKluc(aula, terasa);
         
         terasa.pridajPredmet(new Predmet("pero", "modre pero"));
