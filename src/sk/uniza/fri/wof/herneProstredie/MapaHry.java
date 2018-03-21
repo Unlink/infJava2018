@@ -48,6 +48,7 @@ public class MapaHry {
         VytahoveDvere dvereNaPrizemi = new VytahoveDvere(vytah, aula, 0);
         VytahoveDvere dvereNa1 = new VytahoveDvere(vytah, chodba1Poschodie, 1);
         VytahoveDvere dvereNa2 = new VytahoveDvere(vytah, chodba2Poschodie, 2);
+        ObycajneDvere dvereDoBufetu = new ObycajneDvere(aula, bufet);
         
         DvereNaKluc dvereTerasaAula = new DvereNaKluc(aula, terasa);
         
@@ -59,6 +60,7 @@ public class MapaHry {
         terasa.pridajPredmet(klucAula);
         
         terasa.pridajPredmet(new Pacidlo());
+        terasa.pridajPredmet(new PortalGun());
         return terasa;  // startovacia miestnost hry
     }
 }

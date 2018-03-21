@@ -101,5 +101,9 @@ public class Miestnost {
         return this.predmety.get(parameter);
     }
 
+    public void odstranDvere(String dvere) {
+        this.zoznamDveri.remove(dvere);
+    }
+
     
 }
