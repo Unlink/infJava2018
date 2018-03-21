@@ -22,11 +22,40 @@ public class Vytah extends Miestnost {
 
     public void posunSa() {
         //Zatvorit dvere
+        VytahoveDvere dvere = dajAktualneDvere();
+        if (dvere != null) {
+            dvere.setOtvorene(false);
+        }
         
         //Posunut sa
+        this.aktualnePoschodie += this.ideHore ? 1 : -1;
+        
+        if (this.aktualnePoschodie == -1) {
+            //Ak chcem sa dostanem na -1 tak musim zmenit smer a z 0 pojdem na 1
+            this.aktualnePoschodie = 1;
+            this.ideHore = true;
+        }
+        else if (this.aktualnePoschodie == this.dajDvere().size()) {
+            //Ak som presiel uplne hore tak sa o 2 vrati spat a vytah pojde dole
+            this.aktualnePoschodie -= 2;
+            this.ideHore = false;
+        }
         
         //Otvorit dvere
+        dvere = dajAktualneDvere();
+        if (dvere != null) {
+            dvere.setOtvorene(true);
+        }
+        
+        this.vypisInfoOMiestnosti();
     }
     
-    
+    private VytahoveDvere dajAktualneDvere() {
+        for (IDvere dvere : dajDvere()) {
+            if (((VytahoveDvere)dvere).getPoschodie() == aktualnePoschodie) {
+                return (VytahoveDvere) dvere;
+            }
+        }
+        return null;
+    }
 }

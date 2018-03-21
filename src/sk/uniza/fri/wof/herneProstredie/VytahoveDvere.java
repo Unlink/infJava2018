@@ -28,6 +28,10 @@ public class VytahoveDvere extends ObycajneDvere {
     public boolean suPrechodne(Miestnost miestnost) {
         return this.otvorene;
     }
+
+    public int getPoschodie() {
+        return poschodie;
+    }
     
     
     
