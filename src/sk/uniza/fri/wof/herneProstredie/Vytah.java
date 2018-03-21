@@ -58,4 +58,24 @@ public class Vytah extends Miestnost {
         }
         return null;
     }
+
+    @Override
+    public IDvere dajDverePodlaSmeru(String smer) {
+        //Vytah ma jediny sme vychodu - von
+        if (smer.equals("von")) {
+            return this.dajAktualneDvere();
+        }
+        return null;
+    }
+
+    @Override
+    public String getPopis() {
+        String popis = "";
+        popis += "Si vo výtahu\n";
+        popis += "Pocet poschodi: "+this.dajDvere().size()+"\n";
+        popis += "Aktualne poschodie: "+this.aktualnePoschodie;
+        return popis;
+    }
+    
+    
 }
