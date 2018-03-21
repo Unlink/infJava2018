@@ -1,3 +1,5 @@
+package sk.uniza.fri.wof.hra;
+
 import java.util.Scanner;
 
 /**

@@ -1,9 +1,19 @@
+package sk.uniza.fri.wof.hra;
+
 /**
  * Hlavna trieda hry WoF s metodou main - spustanie v NB
  * 
  * @author Lubomir Sadlon
  * @version 21.2.2012
  */
+
+//Predmety - Zobrazenie v miestnosti, hladanie, inventar
+//NPC
+//Teleport
+//Vlastnosti postavy
+//...
+//Questy
+
 public class Wof00 {
 
     /**
