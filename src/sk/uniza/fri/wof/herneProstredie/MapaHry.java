@@ -2,6 +2,7 @@ package sk.uniza.fri.wof.herneProstredie;
 
 import sk.uniza.fri.wof.herneProstredie.predmety.Hodinky;
 import sk.uniza.fri.wof.herneProstredie.predmety.Kluc;
+import sk.uniza.fri.wof.herneProstredie.predmety.Pacidlo;
 import sk.uniza.fri.wof.herneProstredie.predmety.Predmet;
 
 /*
@@ -47,6 +48,8 @@ public class MapaHry {
         Kluc klucAula = new Kluc("kluc-aula");
         klucAula.pridajDvere(dvereTerasaAula);
         terasa.pridajPredmet(klucAula);
+        
+        terasa.pridajPredmet(new Pacidlo());
         return terasa;  // startovacia miestnost hry
     }
 }

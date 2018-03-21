@@ -8,6 +8,7 @@ package sk.uniza.fri.wof.herneProstredie.predmety;
 import java.util.ArrayList;
 import sk.uniza.fri.wof.herneProstredie.Hrac;
 import sk.uniza.fri.wof.herneProstredie.IDvere;
+import sk.uniza.fri.wof.herneProstredie.IPoskoditelny;
 import sk.uniza.fri.wof.herneProstredie.Miestnost;
 
 /**
@@ -28,7 +29,18 @@ public class Pacidlo implements IPredmet {
 
     @Override
     public void pouzi(Hrac hrac) {
-        //@TODO
+        Miestnost aktualnaMiestnost = hrac.getAktualnaMiestnost();
+        ArrayList<IPredmet> predmety = aktualnaMiestnost.dajPredmety();
+        for (IPredmet predmet : predmety) {
+            if (predmet instanceof IPoskoditelny) {
+                ((IPoskoditelny) predmet).poskod();
+            }
+        }
+        for (IDvere dvere : aktualnaMiestnost.dajDvere()) {
+            if (dvere instanceof IPoskoditelny) {
+                ((IPoskoditelny) dvere).poskod();
+            }
+        }
     }
     
 }

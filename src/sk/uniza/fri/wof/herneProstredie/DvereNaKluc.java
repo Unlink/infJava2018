@@ -9,7 +9,7 @@ package sk.uniza.fri.wof.herneProstredie;
  *
  * @author duracik2
  */
-public class DvereNaKluc implements IDvere {
+public class DvereNaKluc implements IDvere, IPoskoditelny {
 
     private boolean zamknute;
     private final Miestnost prvaMisetnost;
@@ -42,6 +42,12 @@ public class DvereNaKluc implements IDvere {
             System.out.println("Zamkol si dvere");
         }
         this.zamknute = !this.zamknute;
+    }
+
+    @Override
+    public void poskod() {
+        //Rozbije a odomkne dvere
+        this.zamknute = false;
     }
     
 }
