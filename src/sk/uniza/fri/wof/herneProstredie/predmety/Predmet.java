@@ -41,4 +41,9 @@ public class Predmet implements IPredmet {
     public void pouzi(Hrac hrac, String parameter) {
         System.out.println("Neviem ako");
     }
+
+    @Override
+    public boolean daSaZdvihnut() {
+        return true;
+    }
 }

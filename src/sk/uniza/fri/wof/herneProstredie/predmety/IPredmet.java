@@ -21,4 +21,5 @@ public interface IPredmet {
 
     void pouzi(Hrac hrac, String parameter);
     
+    boolean daSaZdvihnut();
 }

@@ -62,7 +62,13 @@ public class Hrac {
         if (predmet == null) {
             System.out.println("Takyto predmet sa v miestnosti nenachadza");
         }
+        else if (!predmet.daSaZdvihnut()) {
+            //Pridame predmet spat do miestnosti
+            this.aktualnaMiestnost.pridajPredmet(predmet);
+            System.out.println("Tento predmet nieje mozne zodvihnut");
+        }
         else {
+            
             this.inventar.put(predmet.getNazov(), predmet);
             System.out.println("Zobral si predmet "+predmet.getNazov());
         }

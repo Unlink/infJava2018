@@ -62,5 +62,10 @@ public class Kluc implements IPredmet {
             System.out.println("Pouzil si kluc na dvere "+parameter);
         }
     }
+
+    @Override
+    public boolean daSaZdvihnut() {
+        return true;
+    }
     
 }

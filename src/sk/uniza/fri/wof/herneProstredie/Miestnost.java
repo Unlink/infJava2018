@@ -97,5 +97,9 @@ public class Miestnost {
         return predmety;
     }
 
+    public IPredmet dajPredmet(String parameter) {
+        return this.predmety.get(parameter);
+    }
+
     
 }

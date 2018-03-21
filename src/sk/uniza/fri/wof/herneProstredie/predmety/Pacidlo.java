@@ -35,7 +35,7 @@ public class Pacidlo implements IPredmet {
         }
         
         Miestnost aktualnaMiestnost = hrac.getAktualnaMiestnost();
-        IPredmet predmet = aktualnaMiestnost.dajPredmety(parameter);
+        IPredmet predmet = aktualnaMiestnost.dajPredmet(parameter);
         IDvere dvere = aktualnaMiestnost.dajDverePodlaSmeru(parameter.replace("dvere-", ""));
         if (predmet != null) {
             if (predmet instanceof IPoskoditelny) {
@@ -59,6 +59,11 @@ public class Pacidlo implements IPredmet {
             System.out.println("Nepoznam takýto objekt");
         }
         
+    }
+
+    @Override
+    public boolean daSaZdvihnut() {
+        return true;
     }
     
 }
