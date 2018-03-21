@@ -34,25 +34,25 @@ public class Parser {
         String vstupnyRiadok = this.citac.nextLine();
 
         String prikaz = null;
-        String parameter = null;
+        String[] parametere = new String[0];
 
         // najde prve dve slova v riadku 
         Scanner tokenizer = new Scanner(vstupnyRiadok);
         if (tokenizer.hasNext()) {
             prikaz = tokenizer.next();      // prve slovo
-            if (tokenizer.hasNext()) {
-                parameter = tokenizer.next();      // druhe slovo
-                // vsimnite si, ze zbytok textu sa ignoruje
+            if (tokenizer.hasNextLine()) {
+                String parametersString = tokenizer.nextLine().trim();
+                parametere = parametersString.split(" ");
             }
         }
 
         // kontrola platnosti prikazu
         if (this.prikazy.jePrikaz(prikaz)) {
             // vytvori platny prikaz
-            return new Prikaz(prikaz, parameter);
+            return new Prikaz(prikaz, parametere);
         } else {
             // vytvori neplatny - "neznamy" prikaz
-            return new Prikaz(null, parameter); 
+            return new Prikaz(null, parametere); 
         }
     }
 }

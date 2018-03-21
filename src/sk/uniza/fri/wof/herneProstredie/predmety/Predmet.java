@@ -38,7 +38,7 @@ public class Predmet implements IPredmet {
     }
 
     @Override
-    public void pouzi(Hrac hrac) {
+    public void pouzi(Hrac hrac, String parameter) {
         System.out.println("Neviem ako");
     }
 }

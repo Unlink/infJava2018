@@ -109,7 +109,7 @@ public class Hra  {
                 this.hrac.polozPredmet(prikaz.getParameter());
                 return false;
             case "pouzi":
-                this.hrac.pouzi(prikaz.getParameter());
+                this.hrac.pouzi(prikaz);
                 return false;
             default:
                 return false;

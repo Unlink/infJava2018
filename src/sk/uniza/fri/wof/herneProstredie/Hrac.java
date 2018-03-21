@@ -90,13 +90,13 @@ public class Hrac {
         }
     }
 
-    public void pouzi(String parameter) {
-        IPredmet predmet = this.inventar.get(parameter);
+    public void pouzi(Prikaz prikaz) {
+        IPredmet predmet = this.inventar.get(prikaz.getParameter(0));
         if (predmet == null) {
             System.out.println("Takyto predmet nemas");
             return;
         }
         
-        predmet.pouzi(this);
+        predmet.pouzi(this, prikaz.getParameter(1));
     }
 }

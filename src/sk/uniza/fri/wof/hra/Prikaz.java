@@ -19,7 +19,7 @@ package sk.uniza.fri.wof.hra;
 
 public class Prikaz {
     private String nazovPrikazu;
-    private String parameter;
+    private String[] parametere;
 
     /**
      * Inicializuje slova prikazu dvomi zadanymi parametrami. Jeden alebo oba
@@ -29,9 +29,9 @@ public class Prikaz {
      *                       null, ak je prikaz neznamy.
      * @param parameter druhe slovo prikazu.
      */
-    public Prikaz(String nazovPrikazu, String parameter) {
+    public Prikaz(String nazovPrikazu, String[] parametere) {
         this.nazovPrikazu = nazovPrikazu;
-        this.parameter = parameter;
+        this.parametere = parametere;
     }
 
     /**
@@ -45,7 +45,11 @@ public class Prikaz {
      * @return druhe slovo - parameter prikazu.
      */
     public String getParameter() {
-        return this.parameter;
+        return this.getParameter(0);
+    }
+    
+    public String getParameter(int poradie) {
+        return this.parametere.length > poradie ? this.parametere[poradie] : null;
     }
 
     /**
@@ -59,6 +63,6 @@ public class Prikaz {
      * @return true, ak prikaz ma parameter.
      */
     public boolean maParameter() {
-        return this.parameter != null;
+        return this.getParameter() != null;
     }
 }

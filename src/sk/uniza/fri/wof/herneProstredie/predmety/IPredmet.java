@@ -19,6 +19,6 @@ public interface IPredmet {
 
     String getPopis();
 
-    void pouzi(Hrac hrac);
+    void pouzi(Hrac hrac, String parameter);
     
 }

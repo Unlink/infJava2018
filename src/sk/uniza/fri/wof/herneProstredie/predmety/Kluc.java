@@ -39,15 +39,27 @@ public class Kluc implements IPredmet {
     }
 
     @Override
-    public void pouzi(Hrac hrac) {
-        ArrayList<IDvere> zoznamDveri = hrac.getAktualnaMiestnost().dajDvere();
-        for (IDvere dvere : zoznamDveri) {
-            if (this.dverePreKluc.contains(dvere)) {
-                if (dvere instanceof DvereNaKluc) {
-                    DvereNaKluc dvereNaKluc = (DvereNaKluc) dvere;
-                    dvereNaKluc.pouziKluc();
-                }
-            }
+    public void pouzi(Hrac hrac, String parameter) {
+        if (parameter == null) {
+            System.out.println("A na ake dvere ho chces pouzit?");
+            return;
+        }
+        
+        IDvere dvere = hrac.getAktualnaMiestnost().dajDverePodlaSmeru(parameter);
+        if (dvere == null) {
+            System.out.println("Taketo dvere v miestnosti niesu");
+            return;
+        }
+        if (!this.dverePreKluc.contains(dvere)) {
+            System.out.println("Tento kluc neotvara tieto dvere");
+            return;
+        }
+        
+        if (dvere instanceof DvereNaKluc) {
+            DvereNaKluc dvereNaKluc = (DvereNaKluc) dvere;
+            dvereNaKluc.pouziKluc();
+            //@TODO dorobit vypis ci sa dvere odomkli alebo zamkli
+            System.out.println("Pouzil si kluc na dvere "+parameter);
         }
     }
     
