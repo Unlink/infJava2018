@@ -1,5 +1,10 @@
 package sk.uniza.fri.wof.herneProstredie;
 
+import com.sun.corba.se.impl.orbutil.RepIdDelegator;
+import javax.print.attribute.standard.MediaSize;
+import sk.uniza.fri.wof.herneProstredie.dialogy.ReplikaHraca;
+import sk.uniza.fri.wof.herneProstredie.dialogy.ReplikaNPC;
+import sk.uniza.fri.wof.herneProstredie.npc.NpcSRozhovorom;
 import sk.uniza.fri.wof.herneProstredie.npc.Osoba;
 import sk.uniza.fri.wof.herneProstredie.npc.Vratnik;
 import sk.uniza.fri.wof.herneProstredie.predmety.Hodinky;
@@ -65,7 +70,25 @@ public class MapaHry {
         terasa.pridajPredmet(new PortalGun());
         
         terasa.pridajNpc(new Osoba("Jozko"));
-        terasa.pridajNpc(new Vratnik());
+        //terasa.pridajNpc(new Vratnik());
+        terasa.pridajNpc(vytvorVratnicku());
         return terasa;  // startovacia miestnost hry
+    }
+    
+    private NpcSRozhovorom vytvorVratnicku() {
+        ReplikaHraca ukonci = new ReplikaHraca("Koniec rozhovoru", null);
+        
+        ReplikaNPC uvodnaReplika = new ReplikaNPC("Hmmm");
+        ReplikaNPC odpovedNaDobryDen = new ReplikaNPC("Co si zelate?");
+        
+        
+        uvodnaReplika.pridajRepliku(new ReplikaHraca("Dobry den", odpovedNaDobryDen));
+        uvodnaReplika.pridajRepliku(ukonci);
+        
+        odpovedNaDobryDen.pridajRepliku(new ReplikaHraca("Nic, dovi", null));
+        odpovedNaDobryDen.pridajRepliku(ukonci);
+        
+        NpcSRozhovorom vratnicka = new NpcSRozhovorom("vratnicka", uvodnaReplika);
+        return vratnicka;
     }
 }
