@@ -35,6 +35,11 @@ public class ReplikaHraca {
         return this.replikaNPC;
     }
     
-    public void vykonaj(Hrac hrac) {
+    /**
+     * @param hrac
+     * @return true ak ukoncuje rozhovor
+     */
+    public boolean vykonaj(Hrac hrac) {
+        return false;
     }
 }
