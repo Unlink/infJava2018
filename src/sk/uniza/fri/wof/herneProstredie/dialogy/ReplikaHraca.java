@@ -13,17 +13,28 @@ import sk.uniza.fri.wof.herneProstredie.Hrac;
  * @author duracik2
  */
 public class ReplikaHraca {
-    
+
+    private final String sprava;
+    private final ReplikaNPC replikaNPC;
+
+    /**
+     *
+     * @param sprava
+     * @param replikaNPC
+     */
+    public ReplikaHraca(String sprava, ReplikaNPC replikaNPC) {
+        this.sprava = sprava;
+        this.replikaNPC = replikaNPC;
+    }
     
     public String dajSpravu() {
-        
+        return this.sprava;
     }
     
     public ReplikaNPC dalsiaReplikaNPC() {
-        
+        return this.replikaNPC;
     }
     
     public void vykonaj(Hrac hrac) {
-        
     }
 }
