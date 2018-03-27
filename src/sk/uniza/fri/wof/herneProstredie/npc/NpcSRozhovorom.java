@@ -51,13 +51,7 @@ public class NpcSRozhovorom implements INpc {
                 }
             } while (replikaHraca == null);
             
-            //Ak koniec rozhovoru
-            if (replikaHraca.vykonaj(hrac)) {
-                aktualnaReplika = null;
-            }
-            else {
-                aktualnaReplika = replikaHraca.dalsiaReplikaNPC();
-            }
+            aktualnaReplika = replikaHraca.dalsiaReplikaNPC();
         }
         
         
