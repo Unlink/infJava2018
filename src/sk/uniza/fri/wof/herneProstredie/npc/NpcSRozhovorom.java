@@ -54,10 +54,6 @@ public class NpcSRozhovorom implements INpc {
             aktualnaReplika = replikaHraca.dalsiaReplikaNPC();
         }
         
-        
-        //Overit a ked neplatna tak znovu
-        //Zmen repliku a opakuj
-        
     }
     
 }

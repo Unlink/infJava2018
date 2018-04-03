@@ -4,6 +4,7 @@ import com.sun.corba.se.impl.orbutil.RepIdDelegator;
 import javax.print.attribute.standard.MediaSize;
 import sk.uniza.fri.wof.herneProstredie.dialogy.ReplikaHraca;
 import sk.uniza.fri.wof.herneProstredie.dialogy.ReplikaNPC;
+import sk.uniza.fri.wof.herneProstredie.npc.INpc;
 import sk.uniza.fri.wof.herneProstredie.npc.NpcSRozhovorom;
 import sk.uniza.fri.wof.herneProstredie.npc.Osoba;
 import sk.uniza.fri.wof.herneProstredie.npc.Vratnik;
@@ -72,10 +73,13 @@ public class MapaHry {
         terasa.pridajNpc(new Osoba("Jozko"));
         //terasa.pridajNpc(new Vratnik());
         terasa.pridajNpc(vytvorVratnicku());
+        
+        
+        terasa.pridajNpc(vytvorBufetarku());
         return terasa;  // startovacia miestnost hry
     }
     
-    private NpcSRozhovorom vytvorVratnicku() {
+    private INpc vytvorVratnicku() {
         ReplikaHraca ukonci = new ReplikaHraca("Koniec rozhovoru", null);
         
         ReplikaNPC uvodnaReplika = new ReplikaNPC("Hmmm");
@@ -90,5 +94,26 @@ public class MapaHry {
         
         NpcSRozhovorom vratnicka = new NpcSRozhovorom("vratnicka", uvodnaReplika);
         return vratnicka;
+    }
+
+    /*
+interakcia bufetarka
+Dobry den.
+1 Dobry
+2 Chcem kupit
+3 Dovi
+
+> 2
+1 Bageta
+2 Kava
+3 Pizza
+
+    */
+    private INpc vytvorBufetarku() {
+        ReplikaNPC uvodnaReplika = new ReplikaNPC("Dobry den");
+        
+        
+        NpcSRozhovorom bufetarka = new NpcSRozhovorom("bufetarka", uvodnaReplika);
+        return bufetarka;
     }
 }
