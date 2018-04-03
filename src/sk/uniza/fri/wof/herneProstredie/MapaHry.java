@@ -111,7 +111,34 @@ Dobry den.
     */
     private INpc vytvorBufetarku() {
         ReplikaNPC uvodnaReplika = new ReplikaNPC("Dobry den");
+        ReplikaNPC menu = new ReplikaNPC("Tak si vyber");
+        ReplikaNPC kupujBagetu = new ReplikaNPC("Nech sa paci, bageta");
+        ReplikaNPC kupujPizzu = new ReplikaNPC("Nech sa paci, pizza");
+        ReplikaNPC kupujKavu = new ReplikaNPC("Chcete malu ci velku?");
+        ReplikaNPC kupujKavuMalu = new ReplikaNPC("Nech sa paci, mala kava");
+        ReplikaNPC kupujKavuVelku = new ReplikaNPC("Nech sa paci, velka kava");
         
+        uvodnaReplika.pridajRepliku(new ReplikaHraca("Dobry", null));
+        uvodnaReplika.pridajRepliku(new ReplikaHraca("Chcem kupit", menu));
+        uvodnaReplika.pridajRepliku(new ReplikaHraca("Dovi", null));
+        
+        menu.pridajRepliku(new ReplikaHraca("bageta", kupujBagetu));
+        menu.pridajRepliku(new ReplikaHraca("kava", kupujKavu));
+        menu.pridajRepliku(new ReplikaHraca("pizza", kupujPizzu));
+        
+        kupujKavu.pridajRepliku(new ReplikaHraca("malu", kupujKavuMalu));
+        kupujKavu.pridajRepliku(new ReplikaHraca("velku", kupujKavuVelku));
+        
+        ReplikaHraca replikaDovi = new ReplikaHraca("Dovi...", null);
+        
+        kupujBagetu.pridajRepliku(new ReplikaHraca("Dakujem", uvodnaReplika));
+        kupujBagetu.pridajRepliku(replikaDovi);
+        kupujPizzu.pridajRepliku(new ReplikaHraca("Dakujem", uvodnaReplika));
+        kupujPizzu.pridajRepliku(replikaDovi);
+        kupujKavuMalu.pridajRepliku(new ReplikaHraca("Dakujem", uvodnaReplika));
+        kupujKavuMalu.pridajRepliku(replikaDovi);
+        kupujKavuVelku.pridajRepliku(new ReplikaHraca("Dakujem", uvodnaReplika));
+        kupujKavuVelku.pridajRepliku(replikaDovi);
         
         NpcSRozhovorom bufetarka = new NpcSRozhovorom("bufetarka", uvodnaReplika);
         return bufetarka;
