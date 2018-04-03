@@ -36,6 +36,7 @@ public class NpcSRozhovorom implements INpc {
         Scanner scanner = new Scanner(System.in);
         
         while (aktualnaReplika != null) {
+            aktualnaReplika.vykonajAkciu(hrac);
             //Vypis repliku npc
             System.out.println(aktualnaReplika.dajSpravu());
             aktualnaReplika.vypisMoznosti();
