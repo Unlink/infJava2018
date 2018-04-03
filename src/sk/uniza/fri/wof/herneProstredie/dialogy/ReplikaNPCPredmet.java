@@ -6,19 +6,23 @@
 package sk.uniza.fri.wof.herneProstredie.dialogy;
 
 import sk.uniza.fri.wof.herneProstredie.Hrac;
+import sk.uniza.fri.wof.herneProstredie.predmety.IPredmet;
 
 /**
  *
  * @author duracik2
  */
 public class ReplikaNPCPredmet extends ReplikaNPC {
+
+    private IPredmet predmet;
     
-    public ReplikaNPCPredmet(String sprava) {
+    public ReplikaNPCPredmet(String sprava, IPredmet predmet) {
         super(sprava);
+        this.predmet = predmet;
     }
 
     @Override
     public void vykonajAkciu(Hrac hrac) {
-        
+        hrac.pridajPredmet(predmet);
     }
 }

@@ -4,6 +4,7 @@ import com.sun.corba.se.impl.orbutil.RepIdDelegator;
 import javax.print.attribute.standard.MediaSize;
 import sk.uniza.fri.wof.herneProstredie.dialogy.ReplikaHraca;
 import sk.uniza.fri.wof.herneProstredie.dialogy.ReplikaNPC;
+import sk.uniza.fri.wof.herneProstredie.dialogy.ReplikaNPCPredmet;
 import sk.uniza.fri.wof.herneProstredie.npc.INpc;
 import sk.uniza.fri.wof.herneProstredie.npc.NpcSRozhovorom;
 import sk.uniza.fri.wof.herneProstredie.npc.Osoba;
@@ -112,11 +113,11 @@ Dobry den.
     private INpc vytvorBufetarku() {
         ReplikaNPC uvodnaReplika = new ReplikaNPC("Dobry den");
         ReplikaNPC menu = new ReplikaNPC("Tak si vyber");
-        ReplikaNPC kupujBagetu = new ReplikaNPC("Nech sa paci, bageta");
-        ReplikaNPC kupujPizzu = new ReplikaNPC("Nech sa paci, pizza");
+        ReplikaNPC kupujBagetu = new ReplikaNPCPredmet("Nech sa paci, bageta", new Predmet("bageta", "bageta so syrom"));
+        ReplikaNPC kupujPizzu = new ReplikaNPCPredmet("Nech sa paci, pizza", new Predmet("pizza", "pizza"));
         ReplikaNPC kupujKavu = new ReplikaNPC("Chcete malu ci velku?");
-        ReplikaNPC kupujKavuMalu = new ReplikaNPC("Nech sa paci, mala kava");
-        ReplikaNPC kupujKavuVelku = new ReplikaNPC("Nech sa paci, velka kava");
+        ReplikaNPC kupujKavuMalu = new ReplikaNPCPredmet("Nech sa paci, mala kava", new Predmet("kava-mala", "Mala kava"));
+        ReplikaNPC kupujKavuVelku = new ReplikaNPCPredmet("Nech sa paci, velka kava", new Predmet("kava-velka", "Velka kava"));
         
         uvodnaReplika.pridajRepliku(new ReplikaHraca("Dobry", null));
         uvodnaReplika.pridajRepliku(new ReplikaHraca("Chcem kupit", menu));
