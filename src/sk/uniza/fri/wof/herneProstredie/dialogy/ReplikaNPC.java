@@ -6,6 +6,7 @@
 package sk.uniza.fri.wof.herneProstredie.dialogy;
 
 import java.util.ArrayList;
+import sk.uniza.fri.wof.herneProstredie.Hrac;
 
 /**
  *
@@ -42,5 +43,8 @@ public class ReplikaNPC {
             return null;
         }
         return this.replikyHraca.get(cisloRepliky);
+    }
+    
+    public void vykonajAkciu(Hrac hrac) {
     }
 }
