@@ -42,5 +42,9 @@ public abstract class Quest {
     public String getPopis() {
         return this.popis;
     }
+
+    public boolean jeAktivny() {
+        return this.stav == StavQuestu.AKTIVNY;
+    }
     
 }

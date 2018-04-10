@@ -80,6 +80,7 @@ public class Hrac {
             
             this.inventar.put(predmet.getNazov(), predmet);
             System.out.println("Zobral si predmet "+predmet.getNazov());
+            this.skontrolujQuesty();
         }
     } 
     
@@ -146,6 +147,14 @@ public class Hrac {
         }
         else {
             System.out.println("Nemas co robit, skus si najst nejaky quest");
+        }
+    }
+
+    private void skontrolujQuesty() {
+        for (Quest quest : this.questy) {
+            if (quest.jeAktivny()) {
+                quest.skontrolujCiSplneny(this);
+            }
         }
     }
 }
