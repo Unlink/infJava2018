@@ -38,5 +38,9 @@ public abstract class Quest {
             this.stav = StavQuestu.NESPLNENY;
         }
     }
+
+    public String getPopis() {
+        return this.popis;
+    }
     
 }

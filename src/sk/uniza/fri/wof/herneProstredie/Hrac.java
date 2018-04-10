@@ -1,10 +1,13 @@
 package sk.uniza.fri.wof.herneProstredie;
 
 
+import java.util.ArrayList;
 import sk.uniza.fri.wof.hra.Prikaz;
 import java.util.HashMap;
 import sk.uniza.fri.wof.herneProstredie.npc.INpc;
 import sk.uniza.fri.wof.herneProstredie.predmety.IPredmet;
+import sk.uniza.fri.wof.questy.NajdiSekeru;
+import sk.uniza.fri.wof.questy.Quest;
 
 /*
  * To change this license header, choose License Headers in Project Properties.
@@ -20,10 +23,15 @@ public class Hrac {
     
     private Miestnost aktualnaMiestnost;
     private HashMap<String, IPredmet> inventar;
+    private ArrayList<Quest> questy;
 
     public Hrac(Miestnost aktualnaMiestnost) {
         this.aktualnaMiestnost = aktualnaMiestnost;
         this.inventar = new HashMap<>();
+        this.questy = new ArrayList<>();
+        
+        NajdiSekeru quest = new NajdiSekeru();
+        this.pridajQuest(quest);
     }
     
     /** 
@@ -122,5 +130,22 @@ public class Hrac {
 
     public boolean maPredmet(String predmet) {
         return this.inventar.containsKey(predmet);
+    }
+    
+    public void pridajQuest(Quest quest) {
+        this.questy.add(quest);
+        quest.akceptuj(this);
+    }
+
+    public void vypisQuesty() {
+        if (!this.questy.isEmpty()) {
+            System.out.println("Zoznam tvojich questov:");
+            for (Quest quest : this.questy) {
+                System.out.println(quest.getPopis());
+            }
+        }
+        else {
+            System.out.println("Nemas co robit, skus si najst nejaky quest");
+        }
     }
 }

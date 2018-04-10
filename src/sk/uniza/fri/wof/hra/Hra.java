@@ -114,6 +114,9 @@ public class Hra  {
             case "interakcia":
                 this.hrac.interakciaSNpc(prikaz);
                 return false;
+            case "questy":
+                this.hrac.vypisQuesty();
+                return false;
             default:
                 return false;
         }
