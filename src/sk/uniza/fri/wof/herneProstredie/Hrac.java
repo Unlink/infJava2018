@@ -119,4 +119,8 @@ public class Hrac {
     public void pridajPredmet(IPredmet predmet) {
        this.inventar.put(predmet.getNazov(), predmet);
     }
+
+    public boolean maPredmet(String predmet) {
+        return this.inventar.containsKey(predmet);
+    }
 }

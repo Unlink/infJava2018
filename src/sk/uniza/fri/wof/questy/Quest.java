@@ -26,5 +26,17 @@ public abstract class Quest {
     }
     
     public abstract void skontrolujCiSplneny(Hrac hrac);
+
+    protected void oznacAkoSplneny() {
+        if (this.stav == StavQuestu.AKTIVNY) {
+            this.stav = StavQuestu.SPLNENY;
+        }
+    }
+    
+    protected void oznacAkoNesplneny() {
+        if (this.stav == StavQuestu.AKTIVNY) {
+            this.stav = StavQuestu.NESPLNENY;
+        }
+    }
     
 }
