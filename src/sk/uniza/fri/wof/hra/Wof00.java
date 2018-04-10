@@ -13,6 +13,8 @@ package sk.uniza.fri.wof.hra;
 //Vlastnosti postavy
 //...
 //Questy
+//  Najdi sekeru
+//  Pozdrav upratovacku
 
 public class Wof00 {
 
