@@ -43,7 +43,7 @@ public abstract class Quest {
         return this.popis;
     }
 
-    public boolean jeAktivny() {
+     public boolean jeAktivny() {
         return this.stav == StavQuestu.AKTIVNY;
     }
     

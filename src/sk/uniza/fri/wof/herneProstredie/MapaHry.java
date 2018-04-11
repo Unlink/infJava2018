@@ -1,10 +1,12 @@
 package sk.uniza.fri.wof.herneProstredie;
 
+import sk.uniza.fri.wof.questy.DonesBagetuVratnickeQuest;
 import com.sun.corba.se.impl.orbutil.RepIdDelegator;
 import javax.print.attribute.standard.MediaSize;
 import sk.uniza.fri.wof.herneProstredie.dialogy.ReplikaHraca;
 import sk.uniza.fri.wof.herneProstredie.dialogy.ReplikaNPC;
 import sk.uniza.fri.wof.herneProstredie.dialogy.ReplikaNPCPredmet;
+import sk.uniza.fri.wof.herneProstredie.dialogy.ReplikaNPCPridajQuest;
 import sk.uniza.fri.wof.herneProstredie.npc.INpc;
 import sk.uniza.fri.wof.herneProstredie.npc.NpcSRozhovorom;
 import sk.uniza.fri.wof.herneProstredie.npc.Osoba;
@@ -85,13 +87,16 @@ public class MapaHry {
         
         ReplikaNPC uvodnaReplika = new ReplikaNPC("Hmmm");
         ReplikaNPC odpovedNaDobryDen = new ReplikaNPC("Co si zelate?");
-        
+        ReplikaNPC dajQuest = new ReplikaNPCPridajQuest("Dones mi bagetu", new DonesBagetuVratnickeQuest());
         
         uvodnaReplika.pridajRepliku(new ReplikaHraca("Dobry den", odpovedNaDobryDen));
         uvodnaReplika.pridajRepliku(ukonci);
         
         odpovedNaDobryDen.pridajRepliku(new ReplikaHraca("Nic, dovi", null));
+        odpovedNaDobryDen.pridajRepliku(new ReplikaHraca("Daj mi ulohu", dajQuest, true));
         odpovedNaDobryDen.pridajRepliku(ukonci);
+        
+        dajQuest.pridajRepliku(ukonci);
         
         NpcSRozhovorom vratnicka = new NpcSRozhovorom("vratnicka", uvodnaReplika);
         return vratnicka;

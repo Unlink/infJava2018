@@ -26,6 +26,10 @@ public class ReplikaNPC {
         this.replikyHraca.add(replikaHraca);
     }
     
+    public void odstranRepliku(ReplikaHraca replikaHraca) {
+        this.replikyHraca.remove(replikaHraca);
+    }
+    
     public String dajSpravu() {
         return this.sprava;
     }

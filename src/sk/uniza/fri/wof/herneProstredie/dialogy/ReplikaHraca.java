@@ -16,6 +16,7 @@ public class ReplikaHraca {
 
     private final String sprava;
     private final ReplikaNPC replikaNPC;
+    private final boolean jednorazova;
 
     /**
      *
@@ -23,9 +24,16 @@ public class ReplikaHraca {
      * @param replikaNPC
      */
     public ReplikaHraca(String sprava, ReplikaNPC replikaNPC) {
+        this(sprava, replikaNPC, false);
+    }
+
+    public ReplikaHraca(String sprava, ReplikaNPC replikaNPC, boolean jednorazova) {
         this.sprava = sprava;
         this.replikaNPC = replikaNPC;
+        this.jednorazova = jednorazova;
     }
+    
+    
     
     public String dajSpravu() {
         return this.sprava;
@@ -37,4 +45,10 @@ public class ReplikaHraca {
     
     public void vykonaj(Hrac hrac) {
     }
+
+    public boolean jeJednorazova() {
+        return jednorazova;
+    }
+    
+    
 }
