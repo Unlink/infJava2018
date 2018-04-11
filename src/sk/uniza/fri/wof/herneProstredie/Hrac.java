@@ -122,6 +122,11 @@ public class Hrac {
             return;
         }
         INpc npc = this.aktualnaMiestnost.getNpc(prikaz.getParameter());
+        if (npc == null) {
+            System.out.println("Take NPC tu nieje?");
+            return;
+        }
+        
         npc.interakcia(this, prikaz.getParameter(1));
     }
 
