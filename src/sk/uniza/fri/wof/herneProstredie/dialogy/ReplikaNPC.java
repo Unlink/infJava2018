@@ -34,19 +34,28 @@ public class ReplikaNPC {
         return this.sprava;
     }
     
-    public void vypisMoznosti() {
+    public void vypisMoznosti(Hrac hrac) {
         int pocitadlo = 0;
         for (ReplikaHraca replikaHraca : this.replikyHraca) {
-            System.out.println("\t " + pocitadlo + ": " + replikaHraca.dajSpravu());
-            pocitadlo++;
+            if (!replikaHraca.jeSkryta(hrac)) {
+                System.out.println("\t " + pocitadlo + ": " + replikaHraca.dajSpravu());
+                pocitadlo++;
+            }
         }
     }
     
-    public ReplikaHraca vyberReplikuHraca(int cisloRepliky) {
-        if (cisloRepliky >= this.replikyHraca.size() || cisloRepliky < 0) {
+    public ReplikaHraca vyberReplikuHraca(int cisloRepliky, Hrac hrac) {
+        ArrayList<ReplikaHraca> zobrazeneRepliky = new ArrayList<>();
+        for (ReplikaHraca replikaHraca : this.replikyHraca) {
+            if (!replikaHraca.jeSkryta(hrac)) {
+                zobrazeneRepliky.add(replikaHraca);
+            }
+        }
+        
+        if (cisloRepliky >= zobrazeneRepliky.size() || cisloRepliky < 0) {
             return null;
         }
-        return this.replikyHraca.get(cisloRepliky);
+        return zobrazeneRepliky.get(cisloRepliky);
     }
     
     public void vykonajAkciu(Hrac hrac) {

@@ -4,6 +4,7 @@ import sk.uniza.fri.wof.questy.DonesBagetuVratnickeQuest;
 import com.sun.corba.se.impl.orbutil.RepIdDelegator;
 import javax.print.attribute.standard.MediaSize;
 import sk.uniza.fri.wof.herneProstredie.dialogy.ReplikaHraca;
+import sk.uniza.fri.wof.herneProstredie.dialogy.ReplikaHracaAkMaPredmet;
 import sk.uniza.fri.wof.herneProstredie.dialogy.ReplikaNPC;
 import sk.uniza.fri.wof.herneProstredie.dialogy.ReplikaNPCPredmet;
 import sk.uniza.fri.wof.herneProstredie.dialogy.ReplikaNPCPridajQuest;
@@ -12,9 +13,11 @@ import sk.uniza.fri.wof.herneProstredie.npc.NpcSRozhovorom;
 import sk.uniza.fri.wof.herneProstredie.npc.Osoba;
 import sk.uniza.fri.wof.herneProstredie.npc.Vratnik;
 import sk.uniza.fri.wof.herneProstredie.predmety.Hodinky;
+import sk.uniza.fri.wof.herneProstredie.predmety.IPredmet;
 import sk.uniza.fri.wof.herneProstredie.predmety.Kluc;
 import sk.uniza.fri.wof.herneProstredie.predmety.Pacidlo;
 import sk.uniza.fri.wof.herneProstredie.predmety.Predmet;
+import sk.uniza.fri.wof.questy.Quest;
 
 /*
  * To change this license header, choose License Headers in Project Properties.
@@ -93,6 +96,7 @@ public class MapaHry {
         uvodnaReplika.pridajRepliku(ukonci);
         
         odpovedNaDobryDen.pridajRepliku(new ReplikaHraca("Nic, dovi", null));
+        odpovedNaDobryDen.pridajRepliku(new ReplikaHracaAkMaPredmet("Doniesol som ti bagetu", null, "bageta"));
         odpovedNaDobryDen.pridajRepliku(new ReplikaHraca("Daj mi ulohu", dajQuest, true));
         odpovedNaDobryDen.pridajRepliku(ukonci);
         

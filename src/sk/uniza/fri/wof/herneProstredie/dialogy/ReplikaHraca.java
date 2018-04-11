@@ -50,5 +50,7 @@ public class ReplikaHraca {
         return jednorazova;
     }
     
-    
+    public boolean jeSkryta(Hrac hrac) {
+        return false;
+    }
 }

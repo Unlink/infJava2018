@@ -12,21 +12,17 @@ import sk.uniza.fri.wof.questy.Quest;
  *
  * @author duracik2
  */
-public class ReplikaNPCPridajQuest extends ReplikaNPC {
+public class ReplikaNPCSplnQuest extends ReplikaNPC {
     
     private Quest quest;
-
-    public ReplikaNPCPridajQuest(String popis, Quest quest) {
-        super(popis);
+    
+    public ReplikaNPCSplnQuest(String sprava, Quest quest) {
+        super(sprava);
         this.quest = quest;
     }
 
     @Override
     public void vykonajAkciu(Hrac hrac) {
-        super.vykonajAkciu(hrac);
-        hrac.pridajQuest(this.quest);
-    }
-    
-    
-    
+        quest.skontrolujCiSplneny(hrac);
+    }    
 }

@@ -39,14 +39,14 @@ public class NpcSRozhovorom implements INpc {
             aktualnaReplika.vykonajAkciu(hrac);
             //Vypis repliku npc
             System.out.println(aktualnaReplika.dajSpravu());
-            aktualnaReplika.vypisMoznosti();
+            aktualnaReplika.vypisMoznosti(hrac);
             ReplikaHraca replikaHraca;
             
             do {
                 System.out.print("> ");
                 String riadok = scanner.nextLine();
                 int volba = Integer.parseInt(riadok);
-                replikaHraca = aktualnaReplika.vyberReplikuHraca(volba);
+                replikaHraca = aktualnaReplika.vyberReplikuHraca(volba, hrac);
                 if (replikaHraca == null) {
                     System.out.println("Zla volba, zadaj znovu");
                 }
