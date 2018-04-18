@@ -1,6 +1,12 @@
 package sk.uniza.fri.wof.hra;
 
+import java.io.File;
+import java.io.FileNotFoundException;
+
+import java.io.PrintWriter;
+import java.util.ArrayList;
 import java.util.Scanner;
+import java.util.logging.Level;
 
 /**
  * Trieda Parser cita vstup zadany hracom do terminaloveho okna a pokusi sa
@@ -16,6 +22,8 @@ import java.util.Scanner;
 public class Parser {
     private NazvyPrikazov prikazy;  // odkaz na pripustne nazvy prikazov
     private Scanner citac;         // zdroj vstupov od hraca
+    private ArrayList<String> historia;
+    private ArrayList<String> buffer;
 
     /**
      * Vytvori citac na citanie vstupov z terminaloveho okna.
@@ -23,6 +31,8 @@ public class Parser {
     public Parser() {
         this.prikazy = new NazvyPrikazov();
         this.citac = new Scanner(System.in);
+        this.historia = new ArrayList<String>();
+        this.buffer = new ArrayList<>();
     }
 
     /**
@@ -31,7 +41,17 @@ public class Parser {
     public Prikaz nacitajPrikaz() {
         System.out.print("> ");     // vyzva pre hraca na zadanie prikazu
 
-        String vstupnyRiadok = this.citac.nextLine();
+        String vstupnyRiadok = null;
+        
+        if (this.buffer.size() > 0) {
+            String line = this.buffer.remove(0);
+            System.out.println(line);
+            vstupnyRiadok = line;
+        }
+        else {
+            vstupnyRiadok = this.citac.nextLine();
+        }
+        this.historia.add(vstupnyRiadok);
 
         String prikaz = null;
         String[] parametere = new String[0];
@@ -53,6 +73,41 @@ public class Parser {
         } else {
             // vytvori neplatny - "neznamy" prikaz
             return new Prikaz(null, parametere); 
+        }
+    }
+
+    public void ulozMakro(Prikaz prikaz) {
+        if (!prikaz.maParameter()) {
+            System.out.println("Kolko?");
+            return;
+        }
+        
+        int pocet = 0;
+        try {
+            pocet = Integer.parseInt(prikaz.getParameter());
+        } catch (NumberFormatException ex) {
+            System.out.println("Nespravny parameter");
+            return;
+        }
+        
+        try (PrintWriter zapisovac = new PrintWriter(prikaz.getParameter(1))) {
+            for (int i = Math.max(0, this.historia.size() - pocet - 2); i < this.historia.size()-1; i++) {
+                zapisovac.println(this.historia.get(i));
+            }
+        } catch (FileNotFoundException ex) {
+            System.out.println("Nepodarilo sa zapisat data");
+            return;
+        }
+    }
+
+    public void nacitajMakro(Prikaz prikaz) {
+        try (Scanner citac = new Scanner(new File(prikaz.getParameter()))){
+            while (citac.hasNextLine()) {  
+                String line = citac.nextLine();
+                this.buffer.add(line);
+            }
+        } catch (FileNotFoundException ex) {
+            System.out.println("Not found");
         }
     }
 }

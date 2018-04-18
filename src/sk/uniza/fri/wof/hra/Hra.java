@@ -117,6 +117,12 @@ public class Hra  {
             case "questy":
                 this.hrac.vypisQuesty();
                 return false;
+            case "ulozMakro":
+                this.parser.ulozMakro(prikaz);
+                return false;
+            case "spustiMakro":
+                this.parser.nacitajMakro(prikaz);
+                return false;
             default:
                 return false;
         }
