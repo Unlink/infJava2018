@@ -1,0 +1,101 @@
+#vsetko co je za tymto znakom je komentar
+#prazdne riadky sa ignoruju
+
+miestnosti: 												#Zoznam miestnosti
+	terasa:terasa - hlavny vstup na fakultu					#nazov miestnosti(jedno slovo):popis(viac slov)
+		predmety:											#v miestnosti mozu byt predmety - predmety:
+			pero: modre pero								#Obycajny predmet - vytvorí sa instancia predmetu new Predmet("pero", "modre pero")
+			- Hodinky										#Predmet hodinky - vytvori sa instancia hodiniek new Hodinky()
+			- Kluc kluc-labak								#Vytvori sa instancia Kluc a zvysok - "kluc-labak" su parametre pre vytvorenie new Kluc("kluc-labak");
+		
+	aula:aula je momentalne v rekonstrukcii
+		predmety:
+			- Kluc kluc-ic
+			
+	labak:labak s pc
+															#Predmety su volitelne ak niesu ziadne nieje to potrebne uvadzat
+		npc: 												#zoznam npc v mistnosti
+			- Jozko 										#osoba bez rozhovoru new Osoba("Jozko")
+			
+	chodba:dlha chodba
+		predmety: 
+			- PortalGun
+
+	chodba1Poschodie:chodba1Poschodie						#Miestnost bez npc a predmetov
+
+	vytah:vytah
+			
+	vratnica:miesto, kde najdeme vratnicku
+		predmety:
+			- Pacidlo
+		npc:
+			vratnicka: vratnicka							#meno(jedno slovo):nazov rozhovoru definovany v sekcii rozhovory(jedno slovo)
+			
+	kancelaria:kancelaria spravcu
+			
+	ic:informacne centrum
+
+	wc:wc
+			
+	bufet:bufet
+		npc:
+			bufetarka: bufetarka
+		
+dvere:
+	- terasa vratnica										#prepojenie dvoch miestnosi obycajnymi dverami
+	DvereNaKluc: vratnica ic isic kluc-ic					#prepojenie miestnosti (vratnica ic) dverami na kluc, kluce ktore otvaraju tieto dvere su isic a kluc-ic
+	- vratnica kancelaria
+	- chodba aula
+	- chodba vratnica
+	DvereNaKluc:chodba labak kluc-labak
+	- chodba wc
+	- chodba bufet
+	- bufet wc
+	VytahoveDvere:chodba vytah 1							#prepojenie miestnosti pomocou vytahu - dve miestnosti a poschodie
+	VytahoveDvere:chodba1Poschodie vytah 2
+	VytahoveDvere:bufet vytah 0
+	
+rozhovory:
+	vratnicka: 
+		uvodnaReplika: Hmmm					#zoznam replik npc kluc(jedno slovo):replika(viac slov) prva je uvodna
+			dobryDen: Dobry den				#odpoved - standardna replika hraca, dalsia replika bude "dobryDen" - new ReplikaHraca("Dobry den", dobryDen)
+			- Dovi							#odpoved ukoncujuca rozhovor
+		dobryDen: Co si zelate?
+			- Nic, dovidenia
+			dajQuest*:Daj mi ulohu			#hviezdicka znamená jednorazova odpoved - new ReplikaHraca("Daj mi ulohu", dajQuest, true);
+			- [ReplikaHracaAkMaPredmet] bageta Doniesol som ti bagetu				#Ak je pred textom repliky hranata zatvorka tak sa pouzije ina trieda
+															#zvysok su parametre pre vyrobenie takejto instancie
+															#new ReplikaHracaAkMaPredmet("Doniesol som ti bagetu", null, "bageta")
+				dajQuest[ReplikaNPCPridajQuest]: DonesBagetuVratnickeQuest Dones mi bagetu  #Aj replika npc moze mat vlastnu triedu
+															#najskor sa uvedie kluc a potom v hranatych zatvorkach nazov triedy pre repliku
+															#zvysok su parametre potrebne na vytvorenie instancie
+															#new ReplikaNPCPridajQuest("Dones mi bagetu", new DonesBagetuVratnickeQuest())
+			- Ok
+	
+	befetarka: 
+		dobryDen: Dobry den
+			- Dobry
+			menu:Chcem kupit
+			- Dovi
+		menu: Tak si vyber
+			bageta: bageta
+			kava: kava
+			pizza: pizza
+		bageta[ReplikaNPCPredmet]: [Bageta(syrova)] Nech sa paci, bageta		#Parametre pre ReplikaNPCPredmet [NazovTriedy(parametre)]
+																				#new Bageta("syrova")
+			doryDen:Dakujem
+			- Dovi
+		kava: A aku chces
+			malaKava:Malu
+			velkaKava:Velku
+			- Nic, dovi
+		pizza[ReplikaNPCPredmet]: (pizza salamova pizza) Nech sa paci, pizza	#V pripade vseobecneho predmetu sa uvadzaju len parametre
+																				#(nazov(jedno slovo) popis(viac slov)) Replika
+			doryDen:Dakujem
+			- Dovi
+		malaKava[ReplikaNPCPredmet]: (mala-kava mala kava) Nech sa paci, mala kava
+			doryDen:Dakujem
+			- Dovi
+		velkaKava[ReplikaNPCPredmet]: (velka-kava velka kava) Nech sa paci, velka kava
+			doryDen:Dakujem
+			- Dovi
