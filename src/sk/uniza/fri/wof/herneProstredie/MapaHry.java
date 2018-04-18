@@ -34,7 +34,9 @@ public class MapaHry {
     private Miestnost startovaciaMiestnost;
 
     public MapaHry() {
-        this.startovaciaMiestnost = this.vytvorMiestnosti();
+        //this.startovaciaMiestnost = this.vytvorMiestnosti();
+        NacitavacMapy nacitavacMapy = new NacitavacMapy();
+        this.startovaciaMiestnost = nacitavacMapy.nacitajMapu("src/mapa.txt");
     }
 
     public Miestnost getStartovaciaMiestnost() {
