@@ -23,15 +23,33 @@ public class Uzol {
     }
 
     public String getRetazec() {
-        return retazec;
+        return this.retazec;
+    }
+    
+    public String getKluc() {
+        if (this.retazec == null) {
+            return null;
+        }
+        return this.retazec.split(":")[0];
     }
     
     public void pridajPotomka(Uzol uzol) {
-        this.potomkovia.put(uzol.getRetazec(), uzol);
+        this.potomkovia.put(uzol.getKluc(), uzol);
+    }
+    
+    public Uzol najdiPotomka(String kluc) {
+        return this.potomkovia.get(kluc);
     }
 
     public ArrayList<Uzol> getPotomkovia() {
         return new ArrayList<>(this.potomkovia.values());
+    }
+
+    public String getHodnota() {
+        if (this.retazec == null) {
+            return null;
+        }
+        return this.retazec.split(":")[1];
     }
     
 }
