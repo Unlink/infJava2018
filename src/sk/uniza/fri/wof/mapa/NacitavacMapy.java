@@ -31,7 +31,7 @@ public class NacitavacMapy {
         try {
             Uzol koren = fileReader.nahrajSubor(cestaKSuboru);
             this.nacitajMiestnosti(koren.najdiPotomka("miestnosti"));
-            System.out.println("Nacitane");
+            return this.miestnosti.get(koren.najdiPotomka("start").getHodnota());
         } catch (IOException ex) {
             
         }

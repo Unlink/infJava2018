@@ -99,3 +99,4 @@ rozhovory:
 		velkaKava[ReplikaNPCPredmet]: (velka-kava velka kava) Nech sa paci, velka kava
 			doryDen:Dakujem
 			- Dovi
+start: terasa

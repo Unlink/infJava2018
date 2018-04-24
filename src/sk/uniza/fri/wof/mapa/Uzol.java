@@ -30,7 +30,7 @@ public class Uzol {
         if (this.retazec == null) {
             return null;
         }
-        return this.retazec.split(":")[0];
+        return this.retazec.split(":")[0].trim();
     }
     
     public void pridajPotomka(Uzol uzol) {
@@ -49,7 +49,7 @@ public class Uzol {
         if (this.retazec == null) {
             return null;
         }
-        return this.retazec.split(":")[1];
+        return this.retazec.split(":")[1].trim();
     }
     
 }
