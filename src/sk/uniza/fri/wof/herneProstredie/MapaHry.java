@@ -1,5 +1,6 @@
 package sk.uniza.fri.wof.herneProstredie;
 
+import sk.uniza.fri.wof.mapa.NacitavacMapy;
 import sk.uniza.fri.wof.questy.DonesBagetuVratnickeQuest;
 import com.sun.corba.se.impl.orbutil.RepIdDelegator;
 import javax.print.attribute.standard.MediaSize;

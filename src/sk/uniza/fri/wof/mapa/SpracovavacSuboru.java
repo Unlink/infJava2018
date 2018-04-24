@@ -3,35 +3,20 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package sk.uniza.fri.wof.herneProstredie;
+package sk.uniza.fri.wof.mapa;
 
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 /**
  *
- * @author duracik2
+ * @author Unlink
  */
-public class NacitavacMapy {
-
-    public NacitavacMapy() {
-    }
+public class SpracovavacSuboru {
     
-    public Miestnost nacitajMapu(String cestaKSuboru) {
-        try {
-            Uzol koren = this.nahrajSubor(cestaKSuboru);
-            System.out.println("Nacitane");
-        } catch (IOException ex) {
-            
-        }
-        return null;
-    }
-    
-    private Uzol nahrajSubor(String cestaKSuboru) throws IOException {
+     public Uzol nahrajSubor(String cestaKSuboru) throws IOException {
         Uzol koren = new Uzol(null);
         ArrayList<Uzol> zasobnik = new ArrayList<>();
         zasobnik.add(koren);
