@@ -10,9 +10,17 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Scanner;
+import java.util.function.Predicate;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import sk.uniza.fri.wof.herneProstredie.Miestnost;
+import sk.uniza.fri.wof.herneProstredie.PortalGun;
+import sk.uniza.fri.wof.herneProstredie.predmety.Hodinky;
+import sk.uniza.fri.wof.herneProstredie.predmety.IPredmet;
+import sk.uniza.fri.wof.herneProstredie.predmety.Kluc;
+import sk.uniza.fri.wof.herneProstredie.predmety.Pacidlo;
+import sk.uniza.fri.wof.herneProstredie.predmety.Predmet;
 
 /**
  *
@@ -21,9 +29,11 @@ import sk.uniza.fri.wof.herneProstredie.Miestnost;
 public class NacitavacMapy {
     
     private HashMap<String, Miestnost> miestnosti;
+    private HashMap<String, IPredmet> predmety;
 
     public NacitavacMapy() {
         this.miestnosti = new HashMap<>();
+        this.predmety = new HashMap<>();
     }
     
     public Miestnost nacitajMapu(String cestaKSuboru) {
@@ -42,6 +52,46 @@ public class NacitavacMapy {
         for (Uzol potomok : miestnosti.getPotomkovia()) {
             Miestnost m = new Miestnost(potomok.getKluc(), potomok.getHodnota());
             this.miestnosti.put(m.getNazov(), m);
+            
+            if (potomok.najdiPotomka("predmety") != null) {
+                this.nacitajPredmety(m, potomok.najdiPotomka("predmety"));
+            }
+        }
+    }
+
+    private void nacitajPredmety(Miestnost miestnost, Uzol predmety) {
+        for (Uzol predmet : predmety.getPotomkovia()) {
+            //Vytvarame obycajny predmet
+            IPredmet p;
+            if (!predmet.isVirtual()) {
+                p = new Predmet(predmet.getKluc(), predmet.getHodnota());
+            }
+            else {
+                Scanner scanner = new Scanner(predmet.getHodnota());
+                String name = scanner.next();
+                ArrayList<String> parametre = new ArrayList<>();
+                while (scanner.hasNext()) {
+                    parametre.add(scanner.next());
+                }
+                p = vyrvorPredmet(name, parametre);
+            }
+            this.predmety.put(p.getNazov(), p);
+            miestnost.pridajPredmet(p);
+        }
+    }
+    
+    public IPredmet vyrvorPredmet(String className, ArrayList<String> parametre) {
+        switch (className) {
+            case "Hodinky":
+                return new Hodinky();
+            case "Kluc":
+                return new Kluc(parametre.get(0)); 
+            case "PortalGun":
+                return new PortalGun();
+             case "Pacidlo":
+                return new Pacidlo();
+            default:
+                return null;
         }
     }
     

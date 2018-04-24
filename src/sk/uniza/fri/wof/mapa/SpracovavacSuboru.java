@@ -17,7 +17,7 @@ import java.util.ArrayList;
 public class SpracovavacSuboru {
     
      public Uzol nahrajSubor(String cestaKSuboru) throws IOException {
-        Uzol koren = new Uzol(null);
+        Uzol koren = new Uzol(null, true);
         ArrayList<Uzol> zasobnik = new ArrayList<>();
         zasobnik.add(koren);
         
@@ -30,7 +30,13 @@ public class SpracovavacSuboru {
                 }
                 
                 int odsadenie = this.getOdsadenie(riadok);
-                Uzol potomok = new Uzol(riadok.trim());
+                //Vytvorime imaginarny kluc
+                boolean virtualKey = riadok.trim().startsWith("-");
+                if (virtualKey) {
+                    int index = zasobnik.get(odsadenie).getPotomkovia().size();
+                    riadok=riadok.replaceFirst("-", index+":");
+                }
+                Uzol potomok = new Uzol(riadok.trim(), virtualKey);
                 if (zasobnik.size() <= odsadenie+1) {
                     zasobnik.add(potomok);
                 }

@@ -16,14 +16,20 @@ public class Uzol {
 
     private final String retazec;
     private HashMap<String, Uzol> potomkovia;
+    private boolean virtualKey;
 
-    public Uzol(String retazec) {
+    public Uzol(String retazec, boolean virtualKey) {
         this.retazec = retazec;
         this.potomkovia = new HashMap<>();
+        this.virtualKey = virtualKey;
     }
 
     public String getRetazec() {
         return this.retazec;
+    }
+    
+    public boolean isVirtual() {
+        return this.virtualKey;
     }
     
     public String getKluc() {
