@@ -56,7 +56,7 @@ public class NacitavacMapy {
 
     private void nacitajMiestnosti(Uzol miestnosti) {
         for (Uzol potomok : miestnosti.getPotomkovia()) {
-            Miestnost m = new Miestnost(potomok.getKluc(), potomok.getHodnota());
+            Miestnost m = this.vyrvorMiestnost(potomok.getKluc(), potomok.getHodnota());
             this.miestnosti.put(m.getNazov(), m);
             
             if (potomok.najdiPotomka("predmety") != null) {
@@ -64,6 +64,15 @@ public class NacitavacMapy {
             }
         }
     }
+    
+     public Miestnost vyrvorMiestnost(String key, String popis) {
+        switch (key) {
+            case "vytah":
+                return new Vytah();
+            default:
+                return new Miestnost(key, popis);
+        }
+     }
 
     private void nacitajPredmety(Miestnost miestnost, Uzol predmety) {
         for (Uzol predmet : predmety.getPotomkovia()) {
